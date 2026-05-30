@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tracker · Fokus Y2K</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="section hero-section">
+            <div class="section-head">
+                <p class="section-num">01</p>
+                <h1 class="hero-title">Study<br>Tracker</h1>
+                <svg class="retro-line" width="100" height="6" viewBox="0 0 100 6" fill="none"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="0" y="0" width="12" height="6" fill="#1B365D" />
+                    <rect x="16" y="0" width="12" height="6" fill="#1B365D" />
+                    <rect x="32" y="0" width="12" height="6" fill="#1B365D" />
+                    <rect x="48" y="0" width="12" height="6" fill="#1B365D" />
+                    <rect x="64" y="0" width="12" height="6" fill="#1B365D" />
+                    <rect x="80" y="0" width="12" height="6" fill="#1B365D" />
+                </svg>
+                <p class="section-lede">Timer Pomodoro & suara latar untuk fokus</p>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="section-head">
+                <p class="section-num">02</p>
+                <h2 class="section-title">Pomodoro</h2>
+            </div>
+            <div class="card timer-card">
+                <div class="timer-display" id="timerDisplay">25:00</div>
+                <svg class="timer-progress" viewBox="0 0 100 100" aria-hidden="true">
+                    <circle class="timer-track" cx="50" cy="50" r="44" fill="none" stroke="#e8e6dc" stroke-width="6" />
+                    <circle class="timer-fill" id="timerFill" cx="50" cy="50" r="44" fill="none" stroke="#1B365D"
+                        stroke-width="6" stroke-linecap="butt" stroke-dasharray="276.46" stroke-dashoffset="0"
+                        transform="rotate(-90 50 50)" />
+                </svg>
+                <div class="timer-controls">
+                    <button class="btn-retro" id="startPauseBtn" aria-label="Mulai atau jeda timer">
+                        <span id="startPauseIcon">▶</span> <span id="startPauseText">Mulai</span>
+                    </button>
+                    <button class="btn-retro" id="resetBtn" aria-label="Reset timer">↺ Reset</button>
+                </div>
+                <div class="duration-options">
+                    <button class="btn-retro small active" data-minutes="25" aria-label="25 menit">25</button>
+                    <button class="btn-retro small" data-minutes="15" aria-label="15 menit">15</button>
+                    <button class="btn-retro small" data-minutes="5" aria-label="5 menit">5</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Suara Fokus: Hujan, Pink Noise, Brown Noise -->
+        <section class="section">
+            <div class="section-head">
+                <p class="section-num">03</p>
+                <h2 class="section-title">Suara Fokus</h2>
+            </div>
+            <div class="ambient-grid">
+                <button class="btn-retro ambient-btn" data-sound="rain" aria-pressed="false">
+                    <svg class="ambient-svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                        <line x1="8" y1="18" x2="8.01" y2="18" />
+                        <line x1="12" y1="20" x2="12.01" y2="20" />
+                        <line x1="16" y1="18" x2="16.01" y2="18" />
+                    </svg>
+                    <span class="ambient-label">Hujan</span>
+                    <span class="ambient-status" aria-live="polite"></span>
+                </button>
+                <button class="btn-retro ambient-btn" data-sound="pink" aria-pressed="false">
+                    <!-- Ikon pink noise: speaker dengan gelombang dinamis -->
+                    <svg class="ambient-svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+                    </svg>
+                    <span class="ambient-label">Pink Noise</span>
+                    <span class="ambient-status" aria-live="polite"></span>
+                </button>
+                <button class="btn-retro ambient-btn" data-sound="brown" aria-pressed="false">
+                    <svg class="ambient-svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10" />
+                        <path d="M12 2a15.3 15.3 0 0 0-4 10 15.3 15.3 0 0 0 4 10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                    </svg>
+                    <span class="ambient-label">Brown Noise</span>
+                    <span class="ambient-status" aria-live="polite"></span>
+                </button>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-head">
+                <p class="section-num">04</p>
+                <h2 class="section-title">Riwayat</h2>
+            </div>
+            <div id="sessionList" class="session-list"></div>
+            <div id="emptyState" class="card empty-state">
+                <p class="olive-text">Belum ada sesi. Tekan ▶ untuk memulai.</p>
+            </div>
+        </section>
+
+        <footer class="section meta-footer">
+            <div class="footer-row">
+                <span id="footerClock" class="footer-clock">00:00:00</span>
+                <span class="footer-separator" aria-hidden="true">|</span>
+                <span id="footerSessionCount" class="footer-count">0 sesi</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
